@@ -45,7 +45,11 @@ a {
   margin-bottom: 20px;
 }
 
-.signup {
+.registration {
+  background-color: #239b76;
+}
+
+.dl {
   background-color: #239b76;
 }
 
