@@ -138,7 +138,8 @@ header {
 
 .strength-icon p {
   position: absolute;
-  top: 20%;
+  top: 50%;
+  bottom: 50%;
   width: 100%;
   color: white;
   margin: auto;
