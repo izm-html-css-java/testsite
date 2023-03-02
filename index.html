@@ -6,6 +6,18 @@
   <title>Chatchat</title>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <script type="text/javascript">
+            function check(){
+                if (contact-form.mail.value == ""){
+                    //条件に一致する場合(メールアドレスが空の場合)
+                    alert("メールアドレスを入力してください");    //エラーメッセージを出力
+                    return false;    //送信ボタン本来の動作をキャンセルします
+                }else{
+                    //条件に一致しない場合(メールアドレスが入力されている場合)
+                    return true;    //送信ボタン本来の動作を実行します
+                }
+            }
+        </script>
 </head>
 <body>
   <header>
@@ -70,16 +82,16 @@
       <div class="contact-form">
         <h3 class="section-title">お問い合わせ</h3>
         <p>メールアドレス（必須）</p>
-        <!-- <input>要素を追加してください -->
+        <!-- <input name="mail">要素を追加してください -->
         <input>
         
-        <p>お問い合わせ内容（必須）</p>
+        <p>お問い合わせ内容</p>
         <!-- <textarea>要素を追加してください -->
         <textarea></textarea>
         
         <p>※必須項目は必ずご入力ください</p>
         <!-- <input>要素を追加してください -->
-        <input class="contact-submit" type="submit" value="送信">
+        <input class="contact-submit" type="submit" value="送信" onClick="return check();">
       </div>
     </div>
   </div>
