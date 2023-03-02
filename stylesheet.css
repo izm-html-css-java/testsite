@@ -195,8 +195,10 @@ input,textarea{
 
 
 .contact-submit{
-  background-color:#dee7ec;
-  color:#889eab;
+  padding: 15px 40px;
+  background-color: #5dca88;
+  cursor: pointer;
+  box-shadow: 0px 7px #1a7940;
 }
 
 footer img {
