@@ -127,7 +127,8 @@ header {
 }
 
 .strength {
-  width: 25%;
+  float: left;
+  width: 33%;
 }
 
 .strength-icon {
