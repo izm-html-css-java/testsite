@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
   <script type="text/javascript">
             function check(){
-                if (contact-form.mail.value == ""){
+                if (form.mail.value == ""){
                     //条件に一致する場合(メールアドレスが空の場合)
                     alert("メールアドレスを入力してください");    //エラーメッセージを出力
                     return false;    //送信ボタン本来の動作をキャンセルします
@@ -83,8 +83,10 @@
         <h3 class="section-title">お問い合わせ</h3>
          <form>
             <hr/>
-            <label>メールアドレス：</label>
+            <label>メールアドレス ※必須：</label>
             <input type="text" name="mail" id="inputMail" maxlength="100" value="" placeholder="メールアドレス">
+            <label>お問い合わせ内容：</label>
+            <input type="number" name="cotact" id="inputContact" value="">
             <br/>
             <input id="checkKiyaku" type="checkbox" name="checkKiyaku"  ><label for="checkKiyaku">利用規約に同意します。</label><br>
             <input type="button" id="btnSubmit" value="送信">
