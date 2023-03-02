@@ -173,12 +173,19 @@ header {
   box-shadow: none;
 }
 
+.section-title {
+  border-bottom: 2px solid #dee7ec;
+  font-size: 28px;
+  padding-bottom: 15px;
+  margin-bottom: 50px;
+}
+
 .contact-form {
   padding-top: 100px;
 }
 
 input,textarea{
-  width:400px;
+  width:1000px;
   margin-top:10px;
   margin-bottom:30px;
   padding:20px;
