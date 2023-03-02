@@ -6,33 +6,6 @@
   <title>Chatchat</title>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
- <script>
-    window.onload = function(){
-        /*各画面オブジェクト*/
-        const btnSubmit = document.getElementById('btnSubmit');
-        const inputMail = document.getElementById('inputMail');
-        const inputContact = document.getElementById('inputContact');
-        const reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/;
-        
-        
-        btnSubmit.addEventListener('click', function(event) {
-            let message = [];
-            /*入力値チェック*/
-            if(inputMail.value==""){
-                message.push("メールアドレスが未入力です。");
-            }else if(!reg.test(inputMail.value)){
-                message.push("メールアドレスの形式が不正です。");
-            }
-            if(inputContact.value==""){
-                message.push("問い合わせ内容が未入力です。");
-            if(message.length > 0){
-                alert(message);
-                return;
-            }
-            alert('入力チェックOK');
-        });
-    };
-    </script>
 </head>
 <body>
   <header>
@@ -96,17 +69,61 @@
       </div>
       <div class="contact-form">
         <h3 class="section-title">お問い合わせ</h3>
-         <form>
-            <hr/>
-            <label>メールアドレス ※必須：</label>
-            <input type="text" name="mail" id="inputMail" maxlength="100" value="" placeholder="メールアドレス">
-            <br/>
-            <label>お問い合わせ内容：</label>
-            <input type="number" name="cotact" id="inputContact" value="">
-            <br/>
-            <input type="button" id="btnSubmit" value="送信">
-            <hr/>
-        </form>
+　<form name="myForm" class="validationForm" novalidate>
+ 　 <div>
+　    <label for="name">メールアドレス </label>
+ 　   <input class="required" type="text" name="mail" id="name">
+ 　 </div>
+ 　 <div>
+ 　   <label for="inquiry">お問い合わせ内容</label>
+ 　   <textarea class="required" name="inquiry" id="inquiry" rows="5" cols="50"></textarea>
+ 　 </div>
+ 　 <button name="send">送信</button>
+　</form>
+ 
+　<script> 
+　//.validationForm を指定した最初の form 要素を取得
+　const validationForm = document.querySelector('.validationForm');
+　//required クラスを指定された要素の集まり  
+　const requiredElems = document.querySelectorAll('.required');
+ 
+　//送信時の処理
+　validationForm.addEventListener('submit', (e) => {
+ 　 //エラーを表示する要素を全て取得して削除（初期化）
+ 　 const errorElems = validationForm.querySelectorAll('.error');
+ 　 errorElems.forEach( (elem) => {
+ 　   elem.remove(); 
+　  });
+ 
+ 　 //.required を指定した全ての要素を forEach() でそれぞれ検証
+ 　 requiredElems.forEach( (elem) => {
+ 　   //値（value プロパティ）の前後の空白文字を削除
+ 　   const elemValue = elem.value.trim(); 
+  　  //値が空の場合はエラーを表示してフォームの送信を中止
+  　  if(elemValue.length === 0) {
+  　    createError(elem, '入力は必須です');
+  　    e.preventDefault();
+  　  }
+ 　 });
+　}); 
+  
+　//エラーメッセージを表示する span 要素を生成して親要素に追加する関数
+　//elem ：対象の要素
+　//errorMessage ：表示するエラーメッセージ
+　const createError = (elem, errorMessage) => {
+　  //span 要素を生成
+　  const errorSpan = document.createElement('span');
+　  //エラー用のクラスを追加（設定）
+　  errorSpan.classList.add('error');
+　  //aria-live 属性を設定
+ 　 errorSpan.setAttribute('aria-live', 'polite');
+ 　 //引数に指定されたエラーメッセージを設定
+ 　 errorSpan.textContent = errorMessage;
+ 　 //elem の親要素の子要素として追加
+ 　 elem.parentNode.appendChild(errorSpan);
+　}
+　</script>
+
       </div>
     </div>
   </div>
