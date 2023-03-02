@@ -6,18 +6,33 @@
   <title>Chatchat</title>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
-  <script type="text/javascript">
-            function check(){
-                if (form.mail.value == ""){
-                    //条件に一致する場合(メールアドレスが空の場合)
-                    alert("メールアドレスを入力してください");    //エラーメッセージを出力
-                    return false;    //送信ボタン本来の動作をキャンセルします
-                }else{
-                    //条件に一致しない場合(メールアドレスが入力されている場合)
-                    return true;    //送信ボタン本来の動作を実行します
-                }
+ <script>
+    window.onload = function(){
+        /*各画面オブジェクト*/
+        const btnSubmit = document.getElementById('btnSubmit');
+        const inputMail = document.getElementById('inputMail');
+        const inputContact = document.getElementById('inputContact');
+        const reg = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}.[A-Za-z0-9]{1,}$/;
+        
+        
+        btnSubmit.addEventListener('click', function(event) {
+            let message = [];
+            /*入力値チェック*/
+            if(inputMail.value==""){
+                message.push("メールアドレスが未入力です。");
+            }else if(!reg.test(inputMail.value)){
+                message.push("メールアドレスの形式が不正です。");
             }
-        </script>
+            if(inputContact.value==""){
+                message.push("問い合わせ内容が未入力です。");
+            if(message.length > 0){
+                alert(message);
+                return;
+            }
+            alert('入力チェックOK');
+        });
+    };
+    </script>
 </head>
 <body>
   <header>
