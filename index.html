@@ -81,17 +81,15 @@
       </div>
       <div class="contact-form">
         <h3 class="section-title">お問い合わせ</h3>
-        <p>メールアドレス（必須）</p>
-        <!-- <input name="mail">要素を追加してください -->
-        <input>
-        
-        <p>お問い合わせ内容</p>
-        <!-- <textarea>要素を追加してください -->
-        <textarea></textarea>
-        
-        <p>※必須項目は必ずご入力ください</p>
-        <!-- <input>要素を追加してください -->
-        <input class="contact-submit" type="submit" value="送信" onClick="return check();">
+         <form>
+            <hr/>
+            <label>メールアドレス：</label>
+            <input type="text" name="mail" id="inputMail" maxlength="100" value="" placeholder="メールアドレス">
+            <br/>
+            <input id="checkKiyaku" type="checkbox" name="checkKiyaku"  ><label for="checkKiyaku">利用規約に同意します。</label><br>
+            <input type="button" id="btnSubmit" value="送信">
+            <hr/>
+        </form>
       </div>
     </div>
   </div>
